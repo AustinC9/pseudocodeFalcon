@@ -9,7 +9,8 @@ The Falcon 9 rocket consists of two stages. Stage 1 propels the rocket almost in
 * activates final landing burn which slows rocket down to 20 km/h
 * deploys three carbon fiber landing legs to help absorb impact and stabilize rocket on the ground
 
-
+## Program Falcon 9
+'''
 <! Deconstruct: did launch go as planned, re-position itself to make fall back onto droneship, deploy grid fins, calculate needed speeds and positions to land appropiately, re-entry burn and landing burn, landing legs  >
 
 <!Objects: equalizing and balancing rocket, re-entry burn, Airspeed of rocket, Ground speed of rocket, Fuel left on board, locations of droneship, difference of altitude of rocket vs droneship, final landing burn,  deploying carbon fiber landing legs,>
@@ -51,7 +52,7 @@ CASE
 ENDCASE 
 
 Start: Final landing sequence
-
+'''
 
 
 
