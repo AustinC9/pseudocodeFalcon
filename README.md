@@ -1,1 +1,5 @@
 I am by no means a rocket scientist and don't claim to be, however, I do find the stage 1 falcon 9 rocket re-entry and landing fascinating. Pondering how this great engineering feat is posible keeps me on my toes. Using knowledge that is readily available to me and what I am learning I will attempt to pseudocode and basic re-entry of the Falcon 9 rocket. I would love to one day experiment and attempt a calculated re-entry of a MODEL rocket using my software developing skills. # pseudocodeFalcon
+
+Deconstruct: did launch go as planned, re-position itself to make fall back onto droneship, deploy grid fins, calculate needed speeds and positions to land appropiately, re-entry burn and landing burn, landing legs  
+
+Objects: equalizing and balancing rocket, re-entry burn, Airspeed of rocket, Ground speed of rocket, Fuel left on board, locations of droneship, difference of altitude of rocket vs droneship, final landing burn,  deploying carbon fiber landing legs

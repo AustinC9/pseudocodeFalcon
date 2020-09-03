@@ -11,47 +11,58 @@ The Falcon 9 rocket consists of two stages. Stage 1 propels the rocket almost in
 
 ## Program Falcon 9
 '''
-<! Deconstruct: did launch go as planned, re-position itself to make fall back onto droneship, deploy grid fins, calculate needed speeds and positions to land appropiately, re-entry burn and landing burn, landing legs  >
 
-<!Objects: equalizing and balancing rocket, re-entry burn, Airspeed of rocket, Ground speed of rocket, Fuel left on board, locations of droneship, difference of altitude of rocket vs droneship, final landing burn,  deploying carbon fiber landing legs,>
-<!Functions: INIT cold gas thrusters to upright and stabalize rocket
-INIT Airspeed indicators
-INIT Groundspeed indicators
-INIT GPS
-INIT Thrust >
+Functions: 
+INIT cold gas thrusters // to upright and stabalize rocket 
+INIT Airspeed indicators // to determine airspeed used for gridfins, thrusters, and burns 
+INIT Groundspeed indicators // to indicate how fast rocket is moving along the ground to compare to droneship movement 
+INIT GPS // Calculate and communicate positions
+INIT Thrust // to assist rocket guidance
 
-Start: MECO (Main engine cut-off) and seperation of stage 1 rocket
-Read: horizontal and vertical position of stage 1 rocket
-ifVert deploy gridfins to guide
-    not compute x,y positions 
-INIT cold gas thrusters to stabalize rocket
-    ifVert THEN deploy gridfins
-        NOT calculate attitude
-INIT GPS
-Display: x,y axis of rocket to Droneship
-INIT airspeed and groundspeed indicactors
-Calculate poisition and speed needed for re-entry
-    IF speed>4700 km/h THEN activate re-entry burn to slow speeds
-        NOT continue calcute speed 
+START(MECO (Main engine cut-off) and seperation of stage 1 rocket)
+
+READ; rocket(x,y) // reads horizontal and vertical position of rocket
+
+INIT(rocketthruster) UNTIL(x,y)=(0,y)
+IF(rocket)=vert THEN(deploygridfins) // to guide
+    not INIT(rocketthruster) UNTIL(x,y)=(0,y) 
+WHILE(rocketthruster) = true THEN(INIT(GPS))
+    IF(vert) THEN deploy gridfins
+
+END(seperation and restabalizing)
+    
+
+DISPLAY(x,y axis of rocket to Droneship)
+
+INIT(airspeed &amp; groundspeed indicactors)
+
+CALCULATE(position and speed for re-entry) 
+    IF(speed=4700) THEN(activate re-entry burn to slow speeds)
+        NOT(continue calcute speed) 
     ENDIF
-IF re-entry burn successfull THEN send droneship position
+IF(re-entry burn successfull) THEN(send droneship position)
     NOT successful READ position
 
-END re-entry sequence
+END(re-entry sequence)
 
 
-Start: Desecent of stage 1 rocket
-Read: Speeds and locations
-Calculate distance and attitude
-IF att \= vert THEN activate gridfins
-    ELSE INIT thrusters
+START(Desecent of stage 1 rocket)
+
+READ(Speed &amp; locations)
+
+CALCULATE(distance &amp; attitude)
+
+IF(att≠vert) THEN(INIT(thruster))
+    ELSE INIT gridfins
 INPUT position
 CASE 
     vert: INIT gridfins 
     non-vert: INIT thrusters to increment/ decrement x value to 0 
 ENDCASE 
 
-Start: Final landing sequence
+START(Final landing sequence)
+CALCULATE(altitude) // calculates difference in altitude from droneship to rocket
+
 '''
 
 
